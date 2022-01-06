@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using TLA.Persistence;
+using TLA.Persistence.Repository.Implementations;
+using TLA.Persistence.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,18 +15,25 @@ builder.Services.AddPooledDbContextFactory<TranslationDb>(
         options.UseSqlite($"Data Source=translation.db");
     }, 2);
 
+builder.Services.AddTransient<IWordsRepository, WordsRepository>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+var ctxFactory = app.Services.GetService<IDbContextFactory<TranslationDb>>();
+using( var ctx = ctxFactory!.CreateDbContext())
 {
-    app.UseExceptionHandler("/Home/Error");
+    new DatabaseFacade(ctx).Migrate();
 }
-app.UseStaticFiles();
+
+// Configure the HTTP request pipeline.
+//if (!app.Environment.IsDevelopment())
+//{
+//    app.UseExceptionHandler("/Home/Error");
+//}
 
 app.UseRouting();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

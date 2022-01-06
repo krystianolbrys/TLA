@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLA.Api", "TLA.Api\TLA.Api.csproj", "{ECC66EA3-5DFB-4CF3-B76D-9D4FFCA0649D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TLA.Api", "TLA.Api\TLA.Api.csproj", "{ECC66EA3-5DFB-4CF3-B76D-9D4FFCA0649D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLA.Persistence", "TLA.Persistence\TLA.Persistence.csproj", "{797D783F-6856-47F3-AD21-F1F0A75DC067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TLA.Persistence", "TLA.Persistence\TLA.Persistence.csproj", "{797D783F-6856-47F3-AD21-F1F0A75DC067}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLA.Persistence.Repository", "TLA.Persistence.Repository\TLA.Persistence.Repository.csproj", "{F943F8D0-5F09-4B57-BD5B-FF003A87D244}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{797D783F-6856-47F3-AD21-F1F0A75DC067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{797D783F-6856-47F3-AD21-F1F0A75DC067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{797D783F-6856-47F3-AD21-F1F0A75DC067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F943F8D0-5F09-4B57-BD5B-FF003A87D244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F943F8D0-5F09-4B57-BD5B-FF003A87D244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F943F8D0-5F09-4B57-BD5B-FF003A87D244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F943F8D0-5F09-4B57-BD5B-FF003A87D244}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
