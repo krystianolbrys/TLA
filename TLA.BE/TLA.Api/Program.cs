@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using TLA.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddPooledDbContextFactory<TranslationDb>(
+    (options) =>
+    {
+        options.UseSqlite($"Data Source=translation.db");
+    }, 2);
 
 var app = builder.Build();
 
