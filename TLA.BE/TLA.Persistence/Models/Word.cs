@@ -7,5 +7,9 @@
         public string InputWord { get; set; } = null!;
 
         public string OutputWord { get; set; } = null!;
+
+        public int QuizId { get; set; }
+
+        public Quiz Quiz { get; set; } = null!;
     }
 }

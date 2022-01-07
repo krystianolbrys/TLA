@@ -24,7 +24,7 @@ var app = builder.Build();
 var ctxFactory = app.Services.GetService<IDbContextFactory<TranslationDb>>();
 using( var ctx = ctxFactory!.CreateDbContext())
 {
-    new DatabaseFacade(ctx).Migrate();
+    ctx.Database.Migrate();
 }
 
 // Configure the HTTP request pipeline.
