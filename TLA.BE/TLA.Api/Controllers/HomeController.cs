@@ -18,7 +18,6 @@ namespace TLA.Api.Controllers
         {
             await _wordsRepository.AddSampleWord();
             var data = await _wordsRepository.GetAll();
-
             return Ok(new { Status = "OK - Working", Data = data });
         }
     }

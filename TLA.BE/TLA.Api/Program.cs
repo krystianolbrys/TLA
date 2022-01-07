@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using TLA.Persistence;
 using TLA.Persistence.Repository.Implementations;
 using TLA.Persistence.Repository.Interfaces;
+using TLA.Persistence.Repository.Transactor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddPooledDbContextFactory<TranslationDb>(
     }, 2);
 
 builder.Services.AddTransient<IWordsRepository, WordsRepository>();
+builder.Services.AddTransient(typeof(ITransactor<>), typeof(Transactor<>));
 
 var app = builder.Build();
 
