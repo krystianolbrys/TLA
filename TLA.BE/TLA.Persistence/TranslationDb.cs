@@ -11,6 +11,7 @@ namespace TLA.Persistence
         public DbSet<Word> Words { get; set; } = null!;
         public DbSet<Quiz> Quizes { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<UserResult> UserResults { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +21,12 @@ namespace TLA.Persistence
             modelBuilder.Entity<Quiz>()
                 .HasMany(q => q.Words)
                 .WithOne(w => w.Quiz);
+
+            modelBuilder.Entity<UserResult>()
+                .HasOne(ur => ur.User);
+
+            modelBuilder.Entity<UserResult>()
+                .HasOne(ur => ur.Word);
         }
     }
 }

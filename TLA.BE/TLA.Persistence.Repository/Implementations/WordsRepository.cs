@@ -18,8 +18,17 @@ namespace TLA.Persistence.Repository.Implementations
         {
             await _transactor.DoInTransaction(async ctx =>
             {
-                await ctx.Words.AddAsync(new Word { InputWord = "InputSample", OutputWord = "OutSample" });
+                await ctx.Quizes.AddAsync(new Quiz { Name = "Basic" });
                 await ctx.SaveChangesAsync();
+
+                var quiz = await ctx.Quizes.OrderByDescending(c => c.Id).FirstAsync();
+
+                quiz!.Words.Add(new Word { InputWord = "InputSample", OutputWord = "OutSample" });
+
+                await ctx.SaveChangesAsync();
+
+                //await ctx.Words.AddAsync(new Word { InputWord = "InputSample", OutputWord = "OutSample" });
+                //await ctx.SaveChangesAsync();
             });
         }
 

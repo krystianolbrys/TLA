@@ -16,8 +16,17 @@ namespace TLA.Api.Controllers
 
         public async Task<ActionResult> Index()
         {
-            await _wordsRepository.AddSampleWord();
+            
             var data = await _wordsRepository.GetAll();
+
+            if (!data.Any())
+            {
+                for (int i = 0; i < 50; i++)
+                {
+                    await _wordsRepository.AddSampleWord();
+                }
+            }
+
             return Ok(new { Status = "OK - Working", Data = data });
         }
     }

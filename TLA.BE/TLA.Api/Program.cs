@@ -14,7 +14,7 @@ builder.Services.AddPooledDbContextFactory<TranslationDb>(
     (options) =>
     {
         options.UseSqlite($"Data Source=translation.db");
-    }, 2);
+    }, 1);
 
 builder.Services.AddTransient<IWordsRepository, WordsRepository>();
 builder.Services.AddTransient(typeof(ITransactor<>), typeof(Transactor<>));
