@@ -2,7 +2,7 @@
 TranslationLearningApplication
 
 # Add Migration in TLA\TLA.BE\TLA.Persistence
-dotnet ef migrations add TransaltionDbInitial -o .\Migrations\ --startup-project ..\TLA.Api\ --no-build --context TranslationDb
+dotnet ef migrations add AddUserAndQuiz -o .\Migrations\ --startup-project ..\TLA.Api\ --no-build --context TranslationDb
 
 {
   "Logging": {
@@ -20,3 +20,5 @@ dotnet ef migrations add TransaltionDbInitial -o .\Migrations\ --startup-project
     }
   }
 }
+
+add CQRS, add Models in BE, UNIQUE in QuizNAme

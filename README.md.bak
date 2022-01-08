@@ -1,7 +1,7 @@
 # TLA
 TranslationLearningApplication
 
-# Add Migration
+# Add Migration in TLA\TLA.BE\TLA.Persistence
 dotnet ef migrations add TransaltionDbInitial -o .\Migrations\ --startup-project ..\TLA.Api\ --no-build --context TranslationDb
 
 {
