@@ -19,13 +19,25 @@ builder.Services.AddPooledDbContextFactory<TranslationDb>(
 builder.Services.AddTransient<IWordsRepository, WordsRepository>();
 builder.Services.AddTransient(typeof(ITransactor<>), typeof(Transactor<>));
 
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 var ctxFactory = app.Services.GetService<IDbContextFactory<TranslationDb>>();
-using( var ctx = ctxFactory!.CreateDbContext())
+using(var ctx = ctxFactory!.CreateDbContext())
 {
     ctx.Database.Migrate();
+
+    // password hash not available now - testing purposes only
+    if (!ctx.Users.Any())
+    {
+        ctx.Users.Add(new TLA.Persistence.Models.User { Login = "x", Password = "x", VisibleName = "Basic User" });
+        ctx.SaveChanges();
+    }
 }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 //if (!app.Environment.IsDevelopment())

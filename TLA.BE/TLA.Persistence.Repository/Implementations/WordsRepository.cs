@@ -26,9 +26,6 @@ namespace TLA.Persistence.Repository.Implementations
                 quiz!.Words.Add(new Word { InputWord = "InputSample", OutputWord = "OutSample" });
 
                 await ctx.SaveChangesAsync();
-
-                //await ctx.Words.AddAsync(new Word { InputWord = "InputSample", OutputWord = "OutSample" });
-                //await ctx.SaveChangesAsync();
             });
         }
 
@@ -37,6 +34,16 @@ namespace TLA.Persistence.Repository.Implementations
             return await _transactor.Query(async (ctx) =>
             {
                 return await ctx.Words.ToListAsync();
+            });
+        }
+
+        public async Task<IReadOnlyCollection<Word>> GetAllWithQuizGroup()
+        {
+            return await _transactor.Query(async (ctx) =>
+            {
+                return await ctx.Words
+                    .Include(w => w.Quiz)
+                    .ToListAsync();
             });
         }
     }

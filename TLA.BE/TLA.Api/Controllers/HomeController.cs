@@ -14,6 +14,8 @@ namespace TLA.Api.Controllers
             _wordsRepository = wordsRepository ?? throw new ArgumentNullException(nameof(wordsRepository));
         }
 
+        [HttpGet]
+        [Route("index")]
         public async Task<ActionResult> Index()
         {
             
