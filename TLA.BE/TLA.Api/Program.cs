@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using TLA.Persistence;
@@ -18,6 +19,8 @@ builder.Services.AddPooledDbContextFactory<TranslationDb>(
 
 builder.Services.AddTransient<IWordsRepository, WordsRepository>();
 builder.Services.AddTransient(typeof(ITransactor<>), typeof(Transactor<>));
+
+builder.Services.AddMediatR(typeof(TLA.BackEnd.Infrastructure.MediatrHandlersMarkerClass));
 
 builder.Services.AddSwaggerGen();
 

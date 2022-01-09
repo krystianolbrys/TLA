@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -15,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TLA.BackEnd\TLA.BackEnd.csproj" />
     <ProjectReference Include="..\TLA.Persistence.Repository\TLA.Persistence.Repository.csproj" />
     <ProjectReference Include="..\TLA.Persistence\TLA.Persistence.csproj" />
   </ItemGroup>

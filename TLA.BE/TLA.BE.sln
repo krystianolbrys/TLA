@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TLA.Api", "TLA.Api\TLA.Api.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TLA.Persistence", "TLA.Persistence\TLA.Persistence.csproj", "{797D783F-6856-47F3-AD21-F1F0A75DC067}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLA.Persistence.Repository", "TLA.Persistence.Repository\TLA.Persistence.Repository.csproj", "{F943F8D0-5F09-4B57-BD5B-FF003A87D244}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TLA.Persistence.Repository", "TLA.Persistence.Repository\TLA.Persistence.Repository.csproj", "{F943F8D0-5F09-4B57-BD5B-FF003A87D244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLA.BackEnd", "TLA.BackEnd\TLA.BackEnd.csproj", "{ADBD4715-046C-4514-83EE-18947F5A90F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{F943F8D0-5F09-4B57-BD5B-FF003A87D244}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F943F8D0-5F09-4B57-BD5B-FF003A87D244}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F943F8D0-5F09-4B57-BD5B-FF003A87D244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBD4715-046C-4514-83EE-18947F5A90F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBD4715-046C-4514-83EE-18947F5A90F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBD4715-046C-4514-83EE-18947F5A90F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBD4715-046C-4514-83EE-18947F5A90F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
