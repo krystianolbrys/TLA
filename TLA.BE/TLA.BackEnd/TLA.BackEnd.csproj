@@ -10,4 +10,11 @@
     <PackageReference Include="MediatR" Version="10.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CommandHandlers\" />
+    <Folder Include="Commands\" />
+    <Folder Include="QuerryHandlers\" />
+    <Folder Include="Querries\" />
+  </ItemGroup>
+
 </Project>
