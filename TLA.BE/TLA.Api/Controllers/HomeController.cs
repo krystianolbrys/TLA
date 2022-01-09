@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TLA.BackEnd;
 using TLA.Persistence.Repository.Interfaces;
 
 namespace TLA.Api.Controllers
@@ -22,20 +21,18 @@ namespace TLA.Api.Controllers
         [Route("index")]
         public async Task<ActionResult> Index()
         {
-
-            var asdasd = await _mediator.Send(new Ping());
-
+            // legacy test code
             var data = await _wordsRepository.GetAll();
 
             if (!data.Any())
             {
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     await _wordsRepository.AddSampleWord();
                 }
             }
 
-            return Ok(new { Status = asdasd, Data = data });
+            return Ok(new { Status = "asdasd", Data = data });
         }
     }
 }

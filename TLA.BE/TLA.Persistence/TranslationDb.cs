@@ -15,9 +15,6 @@ namespace TLA.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Word>()
-                .HasKey(c => c.Id);
-
             modelBuilder.Entity<Quiz>()
                 .HasMany(q => q.Words)
                 .WithOne(w => w.Quiz);
@@ -27,6 +24,23 @@ namespace TLA.Persistence
 
             modelBuilder.Entity<UserResult>()
                 .HasOne(ur => ur.Word);
+
+            SetGuidIdentifiersAsUniqueIndex(modelBuilder);
+        }
+
+        private void SetGuidIdentifiersAsUniqueIndex(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.GuidIdentifier)
+                .IsUnique();
+
+            modelBuilder.Entity<Quiz>()
+                .HasIndex(u => u.GuidIdentifier)
+                .IsUnique();
+
+            modelBuilder.Entity<Word>()
+                .HasIndex(u => u.GuidIdentifier)
+                .IsUnique();
         }
     }
 }

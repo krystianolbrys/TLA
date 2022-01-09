@@ -8,6 +8,8 @@
 
         public string OutputWord { get; set; } = null!;
 
+        public Guid GuidIdentifier { get; set; }
+
         public int QuizId { get; set; }
 
         public Quiz Quiz { get; set; } = null!;

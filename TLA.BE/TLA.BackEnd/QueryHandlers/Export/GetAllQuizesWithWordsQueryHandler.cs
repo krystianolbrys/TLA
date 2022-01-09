@@ -21,11 +21,13 @@ namespace TLA.BackEnd.QueryHandlers.Export
             var quizesResponse = quizesWithWords.Select(quiz => new QuizResponse
             {
                 QuizName = quiz.Name,
+                GuidIdentifier = quiz.GuidIdentifier,
                 Words = quiz.Words
                     .Select(word => new WordResponse
                     {
                         InputWord = word.InputWord,
-                        OutputWord = word.OutputWord
+                        OutputWord = word.OutputWord,
+                        GuidIdentifier = word.GuidIdentifier
                     }).ToList(),
             }).ToList();
 

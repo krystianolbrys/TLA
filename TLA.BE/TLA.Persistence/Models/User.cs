@@ -9,5 +9,7 @@
         public string Password { get; set; } = null!;
 
         public string VisibleName { get; set; } = null!;
+
+        public Guid GuidIdentifier { get; set; }
     }
 }

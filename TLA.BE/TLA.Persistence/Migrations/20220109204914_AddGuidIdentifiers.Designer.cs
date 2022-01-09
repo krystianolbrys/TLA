@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TLA.Persistence;
 
@@ -10,9 +11,10 @@ using TLA.Persistence;
 namespace TLA.Persistence.Migrations
 {
     [DbContext(typeof(TranslationDb))]
-    partial class TranslationDbModelSnapshot : ModelSnapshot
+    [Migration("20220109204914_AddGuidIdentifiers")]
+    partial class AddGuidIdentifiers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.1");
