@@ -9,5 +9,7 @@ namespace TLA.Persistence.Repository.Interfaces
         Task<IReadOnlyCollection<Word>> GetAllWithQuizGroup();
 
         Task AddSampleWord();
+
+        Task<IReadOnlyCollection<Quiz>> GetAllQuizesWithWords();
     }
 }

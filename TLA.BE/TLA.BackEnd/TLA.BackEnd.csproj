@@ -13,8 +13,10 @@
   <ItemGroup>
     <Folder Include="CommandHandlers\" />
     <Folder Include="Commands\" />
-    <Folder Include="QuerryHandlers\" />
-    <Folder Include="Querries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TLA.Persistence.Repository\TLA.Persistence.Repository.csproj" />
   </ItemGroup>
 
 </Project>

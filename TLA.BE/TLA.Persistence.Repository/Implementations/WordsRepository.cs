@@ -37,6 +37,14 @@ namespace TLA.Persistence.Repository.Implementations
             });
         }
 
+        public async Task<IReadOnlyCollection<Quiz>> GetAllQuizesWithWords() =>
+            await _transactor.Query(async (ctx) =>
+            {
+                return await ctx.Quizes
+                    .Include(w => w.Words)
+                    .ToListAsync();
+            });
+
         public async Task<IReadOnlyCollection<Word>> GetAllWithQuizGroup()
         {
             return await _transactor.Query(async (ctx) =>
