@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TLA.Persistence.Repository\TLA.Persistence.Repository.csproj" />
   </ItemGroup>
 

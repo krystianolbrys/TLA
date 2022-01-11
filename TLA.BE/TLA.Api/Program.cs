@@ -19,11 +19,11 @@ builder.Services.AddPooledDbContextFactory<TranslationDb>(
     }, 1);
 
 builder.Services.AddScoped<IGuidProvider, GuidProvider>();
-builder.Services.AddTransient<IWordsRepository, WordsRepository>();
+builder.Services.AddTransient<IWordRepository, WordRepository>();
 builder.Services.AddTransient<IQuizRepository, QuizRepository>();
 builder.Services.AddTransient(typeof(ITransactor<>), typeof(Transactor<>));
 
-builder.Services.AddMediatR(typeof(TLA.BackEnd.Infrastructure.MediatrHandlersMarkerClass));
+builder.Services.AddMediatR(typeof(TLA.BackEnd.MediatrHandlersMarkerClass));
 
 builder.Services.AddSwaggerGen();
 

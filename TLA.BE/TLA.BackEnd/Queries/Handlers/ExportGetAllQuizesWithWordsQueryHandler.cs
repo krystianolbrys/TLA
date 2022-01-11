@@ -1,20 +1,20 @@
 ﻿using MediatR;
-using TLA.BackEnd.Queries.Export;
-using TLA.BackEnd.QueryHandlersResponses;
+using TLA.BackEnd.Queries.Requests;
+using TLA.BackEnd.Queries.Responses;
 using TLA.Persistence.Repository.Interfaces;
 
-namespace TLA.BackEnd.QueryHandlers.Export
+namespace TLA.BackEnd.Queries.Handlers
 {
-    public class GetAllQuizesWithWordsQueryHandler : IRequestHandler<GetAllQuizesWithWordsQuery, AllQuizesWithWordsQueryResponse>
+    internal class ExportGetAllQuizesWithWordsQueryHandler : IRequestHandler<ExportGetAllQuizesWithWordsQuery, ExportAllQuizesWithWordsQueryResponse>
     {
-        private readonly IWordsRepository _wordsRepository;
+        private readonly IWordRepository _wordsRepository;
 
-        public GetAllQuizesWithWordsQueryHandler(IWordsRepository wordsRepository)
+        public ExportGetAllQuizesWithWordsQueryHandler(IWordRepository wordsRepository)
         {
             _wordsRepository = wordsRepository ?? throw new ArgumentNullException(nameof(wordsRepository));
         }
 
-        public async Task<AllQuizesWithWordsQueryResponse> Handle(GetAllQuizesWithWordsQuery request, CancellationToken cancellationToken)
+        public async Task<ExportAllQuizesWithWordsQueryResponse> Handle(ExportGetAllQuizesWithWordsQuery request, CancellationToken cancellationToken)
         {
             var quizesWithWords = await _wordsRepository.GetAllQuizesWithWords();
 
@@ -31,7 +31,7 @@ namespace TLA.BackEnd.QueryHandlers.Export
                     }).ToList(),
             }).ToList();
 
-            return new AllQuizesWithWordsQueryResponse
+            return new ExportAllQuizesWithWordsQueryResponse
             {
                 Quizes = quizesResponse
             };

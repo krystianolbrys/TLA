@@ -4,6 +4,6 @@ namespace TLA.Persistence.Repository.Interfaces
 {
     public interface IQuizRepository
     {
-        Task<Quiz> AddQuiz(string quizName);
+        Task<Quiz> AddQuizAsync(string quizName);
     }
 }

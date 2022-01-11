@@ -16,7 +16,7 @@ namespace TLA.BackEnd.Commands.Handlers
 
         public async Task<AddQuizResponse> Handle(AddQuizCommand request, CancellationToken cancellationToken)
         {
-            var quiz = await _quizRepository.AddQuiz(request.Name);
+            var quiz = await _quizRepository.AddQuizAsync(request.Name);
 
             var response = new AddQuizResponse
             {

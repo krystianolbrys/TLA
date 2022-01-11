@@ -16,7 +16,7 @@ namespace TLA.Persistence.Repository.Implementations
             _guidProvider = guidProvider ?? throw new ArgumentNullException(nameof(guidProvider));
         }
 
-        public async Task<Quiz> AddQuiz(string quizName) =>
+        public async Task<Quiz> AddQuizAsync(string quizName) =>
             await _transactor.DoInTransaction(async ctx =>
             {
                 var entity = new Quiz

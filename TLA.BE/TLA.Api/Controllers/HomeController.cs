@@ -1,38 +1,33 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TLA.BackEnd.Commands.Requests;
 using TLA.Persistence.Repository.Interfaces;
 
 namespace TLA.Api.Controllers
 {
+    [Route("infrastructure")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IWordsRepository _wordsRepository;
         private readonly IMediator _mediator;
 
-        public HomeController(ILogger<HomeController> logger, IWordsRepository wordsRepository, IMediator mediator)
+        public HomeController(ILogger<HomeController> logger, IWordRepository wordsRepository, IMediator mediator)
         {
-            _logger = logger;
-            _wordsRepository = wordsRepository ?? throw new ArgumentNullException(nameof(wordsRepository));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpGet]
-        [Route("index")]
-        public async Task<ActionResult> Index()
+        [Route("createBasicData")]
+        public async Task<ActionResult> CreateBasicData()
         {
-            // legacy test code
-            var data = await _wordsRepository.GetAll();
+            var quiz = await _mediator.Send(new AddQuizCommand("SampleQuiz1"));
 
-            if (!data.Any())
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    await _wordsRepository.AddSampleWord();
-                }
-            }
+            await _mediator.Send(new AddWordCommand("wchłaniać", "absorb", quiz.Id));
+            await _mediator.Send(new AddWordCommand("nawiązywać", "referring", quiz.Id));
+            await _mediator.Send(new AddWordCommand("zapobiegać", "prevent", quiz.Id));
+            await _mediator.Send(new AddWordCommand("nienawidzić", "detest", quiz.Id));
+            await _mediator.Send(new AddWordCommand("dostosować", "adjust, suit, adapt", quiz.Id));
 
-            return Ok(new { Status = "asdasd", Data = data });
+            return Ok();
         }
     }
 }

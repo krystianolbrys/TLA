@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using TLA.BackEnd.Queries.Export;
-using TLA.BackEnd.QueryHandlersResponses;
+using TLA.BackEnd.Queries.Requests;
+using TLA.BackEnd.Queries.Responses;
 
 namespace TLA.Api.Controllers.External
 {
@@ -17,11 +17,7 @@ namespace TLA.Api.Controllers.External
 
         [HttpGet]
         [Route("words")]
-        public async Task<ActionResult<AllQuizesWithWordsQueryResponse>> GetWords()
-        {
-            var message = new GetAllQuizesWithWordsQuery();
-
-            return await _mediator.Send(message);
-        }
+        public async Task<ActionResult<ExportAllQuizesWithWordsQueryResponse>> GetWords() =>
+            await _mediator.Send(new ExportGetAllQuizesWithWordsQuery());
     }
 }

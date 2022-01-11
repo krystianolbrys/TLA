@@ -1,6 +1,6 @@
-﻿namespace TLA.BackEnd.QueryHandlersResponses
+﻿namespace TLA.BackEnd.Queries.Responses
 {
-    public class AllQuizesWithWordsQueryResponse
+    public class ExportAllQuizesWithWordsQueryResponse
     {
         public IReadOnlyCollection<QuizResponse> Quizes { get; set; } = null!;
     }

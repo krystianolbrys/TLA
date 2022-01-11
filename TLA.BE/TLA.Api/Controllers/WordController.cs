@@ -5,19 +5,19 @@ using TLA.BackEnd.Commands.Responses;
 
 namespace TLA.Api.Controllers
 {
-    [Route("quiz")]
-    public class QuizController : Controller
+    [Route("word")]
+    public class WordController : Controller
     {
         private readonly IMediator _mediator;
 
-        public QuizController(IMediator mediator)
+        public WordController(IMediator mediator)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<ActionResult<AddQuizResponse>> AddQuiz(string name) =>
-            await _mediator.Send(new AddQuizCommand(name));
+        public async Task<ActionResult<AddWordResponse>> AddWord(string inputWord, string outputWord, int quizId) =>
+            await _mediator.Send(new AddWordCommand(inputWord, outputWord, quizId));
     }
 }

@@ -2,7 +2,7 @@
 
 namespace TLA.Persistence.Repository.Interfaces
 {
-    public interface IWordsRepository
+    public interface IWordRepository
     {
         Task<IReadOnlyCollection<Word>> GetAll();
 
@@ -11,5 +11,7 @@ namespace TLA.Persistence.Repository.Interfaces
         Task AddSampleWord();
 
         Task<IReadOnlyCollection<Quiz>> GetAllQuizesWithWords();
+
+        Task<Word> AddWordAsync(string inputWord, string outputWord, int quizId);
     }
 }
