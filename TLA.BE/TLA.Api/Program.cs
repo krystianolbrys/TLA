@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using TLA.Infrastructure.GuidIdentifiers;
 using TLA.Persistence;
 using TLA.Persistence.Repository.Implementations;
 using TLA.Persistence.Repository.Interfaces;
@@ -17,7 +18,9 @@ builder.Services.AddPooledDbContextFactory<TranslationDb>(
         options.UseSqlite($"Data Source=translation.db");
     }, 1);
 
+builder.Services.AddScoped<IGuidProvider, GuidProvider>();
 builder.Services.AddTransient<IWordsRepository, WordsRepository>();
+builder.Services.AddTransient<IQuizRepository, QuizRepository>();
 builder.Services.AddTransient(typeof(ITransactor<>), typeof(Transactor<>));
 
 builder.Services.AddMediatR(typeof(TLA.BackEnd.Infrastructure.MediatrHandlersMarkerClass));

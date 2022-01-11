@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TLA.BackEnd\TLA.BackEnd.csproj" />
+    <ProjectReference Include="..\TLA.Infrastructure\TLA.Infrastructure.csproj" />
     <ProjectReference Include="..\TLA.Persistence.Repository\TLA.Persistence.Repository.csproj" />
     <ProjectReference Include="..\TLA.Persistence\TLA.Persistence.csproj" />
   </ItemGroup>
