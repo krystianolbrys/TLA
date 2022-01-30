@@ -1,4 +1,6 @@
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using TLA.Infrastructure.GuidIdentifiers;
@@ -10,6 +12,25 @@ using TLA.Persistence.Repository.Transactor;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAuthentication(opt =>
+    {
+        opt.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        opt.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        opt.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        opt.DefaultSignOutScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    })
+    .AddCookie(opt =>
+    {
+        opt.Cookie.Name = "X-Auth-1";
+        opt.Events.OnRedirectToLogin = ctx =>
+        {
+            ctx.Response.Clear();
+            ctx.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            return Task.FromResult(0);
+        };
+    });
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddPooledDbContextFactory<TranslationDb>(
@@ -26,6 +47,8 @@ builder.Services.AddTransient(typeof(ITransactor<>), typeof(Transactor<>));
 builder.Services.AddMediatR(typeof(TLA.BackEnd.MediatrHandlersMarkerClass));
 
 builder.Services.AddSwaggerGen();
+
+
 
 var app = builder.Build();
 
@@ -59,8 +82,8 @@ app.UseSwaggerUI();
 //}
 
 app.UseRouting();
-
-//app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
